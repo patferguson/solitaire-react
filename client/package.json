@@ -1,6 +1,7 @@
 {
   "name": "solitaire-react",
   "version": "0.1.0",
+  "license": "GPL-3.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.8.4"
