@@ -8,6 +8,12 @@ Execute this command from the base project directory to start the React Webpack 
 
 `foreman start -f Procfile.dev -p 3000`
 
+## Building the project for deployment
+
+*This section is WIP*
+
+Run `yarn run build` from the *client/* directory to generate a *build/* folder containing the compiled project assets, these static files may then be served via a HTTP server for access by end users on the web.
+
 ## References & Acknowledgements
 The React component of this project was created using a base of Facebook's [create-react-app](https://github.com/facebookincubator/create-react-app).
 
