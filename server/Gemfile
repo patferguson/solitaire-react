@@ -30,6 +30,8 @@ gem 'foreman', '~> 0.82.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # Use RSpec as the rails test runner https://github.com/rspec/rspec-rails
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
