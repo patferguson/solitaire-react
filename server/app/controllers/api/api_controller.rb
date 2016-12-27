@@ -19,7 +19,7 @@ module Api
 
     private
       def ping_params
-        params.permit(:ping_message)
+        params.permit(:format, :ping_message)
       end
   end
 end
