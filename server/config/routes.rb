@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Enforce .json format on all API routes. E.g. GET /api/version.json
   namespace :api, format: true, constraints: { format: 'json' } do
-    get :version
+    get 'version' => 'api#version', as: :version
+    post 'ping' => 'api#ping', as: :ping
   end
 end
