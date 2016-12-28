@@ -3,8 +3,9 @@ rvm: # See .ruby-version for ruby version to use through RVM
 
 env:
   - DB=sqlite
-  - DB=postgresql
-  - DB=mysql
+  # Ensure the correct statements in the before_script section are also uncommented depending on which database engine is in use
+  #- DB=postgresql
+  #- DB=mysql
 
 sudo: false
 before_install:
@@ -30,9 +31,10 @@ install:
   #- cd ../
 
 before_script:
-  # Initialise any available databases if needed
-  - psql -c 'create database solitaire_react_test' -U postgres
-  - mysql -e 'create database solitaire_react_test'
+  # Ensure the correct statements in the env section are also uncommented depending on which database engine is in use
+  # # Initialise any available databases if needed
+  #- psql -c 'create database solitaire_react_test' -U postgres
+  #- mysql -e 'create database solitaire_react_test'
 
 script:
   - cd server/
