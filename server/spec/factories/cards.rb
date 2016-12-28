@@ -6,16 +6,18 @@ FactoryGirl.define do
 
     trait :with_parent_card do
       parent_card { build(:card) }
-      after(:build) do |card|
-        card.attach_to_card(parent_card)
-      end
     end
 
     trait :with_child_card do
       child_card { build(:card) }
-      after(:build) do |card|
-        child_card.attach_to_card(card)
-      end
+    end
+
+    trait :with_black_suit do
+      suit [:club, :spades].sample
+    end
+
+    trait :with_red_suit do
+      suit [:diamond, :heart].sample
     end
   end
 end

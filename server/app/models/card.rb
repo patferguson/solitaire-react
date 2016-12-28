@@ -48,17 +48,4 @@ class Card < ActiveRecord::Base
     end
     return :unknown
   end
-
-  def attach_to_card(card)
-    card.child_card = self
-    self.parent_card = card
-  end
-
-  def detach_from_parent
-    if self.parent_card.exists?
-      # Clear card associations from both ends
-      self.parent_card.child_card = nil
-      self.parent_card = nil
-    end
-  end
 end
