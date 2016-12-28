@@ -4,13 +4,38 @@ class Card < ActiveRecord::Base
   # Associations
   ##############
 
+  # For housing cards in 'Decks'
+  belongs_to :deck, inverse_of: :cards, optional: true
+
+  # For attaching cards to one another in 'stacks'
   belongs_to :parent_card, class_name: 'Card', inverse_of: :child_card, optional: true
   has_one :child_card, class_name: 'Card', inverse_of: :parent_card, dependent: :destroy, foreign_key: "parent_card_id"
+
+  # Constructor
+  #############
+
+  def initialize(attributes=nil)
+    super(attributes)
+
+    # This score will be used to sort cards in a given deck
+    self.sort_weight ||= rand(0..1000000)
+  end
+
+  # Class Methods
+  ###############
+
+  def self.face_value_range
+    return [*0..13]
+  end
+
+  def self.suit_types
+    return [:diamond, :club, :heart, :spades]
+  end
 
   # Enumerations
   ##############
 
-  enumerize :suit, in: [:diamond, :club, :heart, :spades]
+  enumerize :suit, in: Card.suit_types
 
   # Validations
   #############
@@ -21,7 +46,9 @@ class Card < ActiveRecord::Base
 
   # Index: 0 1 2 3 4 5 6 7 8 9 10 11 12 13
   #  Card: A 1 2 3 4 5 6 7 8 9 10 J  Q  K
-  validates_inclusion_of :face_value, :in => 0..13, :allow_blank => true, :message => "must have a face value from Ace through to King (0-13)"
+  validates_inclusion_of :face_value, :in => Card.face_value_range, :allow_blank => true, :message => "must have a face value from Ace through to King (0-13)"
+
+  validates_presence_of :sort_weight, :if => Proc.new { |card| card.deck.present? }
 
   validate :parent_has_child_set?
   def parent_has_child_set?

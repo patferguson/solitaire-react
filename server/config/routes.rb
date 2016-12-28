@@ -11,5 +11,7 @@ Rails.application.routes.draw do
         post 'attach_to_card/:parent_card_id' => 'cards#attach_to_card', as: :attach_to_card
       end
     end
+
+    resources :decks
   end
 end

@@ -1,5 +1,5 @@
 module Api
-  class CardsController < Api::ApiController
+  class CardsController < ApiController
     before_action :set_card, only: [:show, :update, :destroy, :attach_to_card]
 
     # GET /cards

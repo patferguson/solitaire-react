@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228043824) do
+ActiveRecord::Schema.define(version: 20161228114937) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "suit"
@@ -20,8 +20,16 @@ ActiveRecord::Schema.define(version: 20161228043824) do
     t.datetime "updated_at",     null: false
     t.integer  "parent_card_id"
     t.integer  "child_card_id"
+    t.integer  "deck_id"
+    t.integer  "sort_weight"
     t.index ["child_card_id"], name: "index_cards_on_child_card_id"
+    t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["parent_card_id"], name: "index_cards_on_parent_card_id"
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
