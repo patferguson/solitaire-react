@@ -14,6 +14,7 @@ before_install:
   # - export PATH=$HOME/.yarn/bin:$PATH
 
 install:
+  - pwd
   - cd server/ && gem install bundler && bundle install --deployment --without development production
   # 29/12/2016: Only run Rails tests for now
   #- cd ../client/ && yarn install
