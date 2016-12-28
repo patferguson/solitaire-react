@@ -19,7 +19,9 @@ module Api
 
     private
       def ping_params
-        params.permit(:format, :ping_message)
+        # By default Rails copies the parameters hash into a sub hash based on the controller's name
+        # E.g. Input: {:format, :ping_message}, output: {:format, :ping_message, :api => {:format, :ping_message}}
+        params.permit(:api, :format, :ping_message)
       end
   end
 end

@@ -27,11 +27,18 @@ gem 'puma', '~> 3.0'
 # Use Foreman for starting both the Rails and React Webpack servers locally
 gem 'foreman', '~> 0.82.0'
 
+# Use Enumerize to provide a cleaner wrapper around typed enum/string data.
+gem 'enumerize', '~> 2.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   # Use RSpec as the rails test runner https://github.com/rspec/rspec-rails
   gem 'rspec-rails', '~> 3.5'
+  # Use FactoryGirl to assist with quickly mocking objects for tests
+  gem 'factory_girl_rails', '~> 4.8'
+  # Use Faker to assist with mocking data for test objects
+  gem 'faker', '~> 1.7'
 end
 
 group :development do
@@ -39,6 +46,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  # Use rails-controller-testing to bring back the assigns(:variable_name) functionality for accessing instance variables passed to views
+  gem 'rails-controller-testing', '~> 1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

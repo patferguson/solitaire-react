@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   namespace :api, format: true, constraints: { format: 'json' } do
     get 'version' => 'api#version', as: :version
     post 'ping' => 'api#ping', as: :ping
+
+    resources :cards
   end
 end
