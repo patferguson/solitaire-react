@@ -14,15 +14,14 @@ before_install:
   # - export PATH=$HOME/.yarn/bin:$PATH
 
 install:
-  - pwd
-  - ls
-  - cd server/ && gem install bundler && bundle install --deployment --without development production
+  - cd server/ && gem install bundler && bundle install --deployment --without development production && cd ../
+
   # 29/12/2016: Only run Rails tests for now
-  #- cd ../client/ && yarn install
+  #- cd client/ && yarn install && cd ../
 script:
-  - cd server/ && bundle exec rspec spec
+  - cd server/ && bundle exec rspec spec && cd ../
   # 29/12/2016: Only run Rails tests for now
-  #- cd ../client/ && yarn test
+  #- cd client/ && yarn test && cd ../
 
 cache:
   -bundler: true
