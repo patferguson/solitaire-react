@@ -1,0 +1,30 @@
+language: ruby
+rvm: # See .ruby-version for ruby version to use through RVM
+
+language: node_js
+node_js: # See .nvmrc for node version to use through NVM
+
+# 29/12/2016: Only run Rails tests for now
+# sudo: required
+# before_install:
+#   # Repo for Yarn
+#   - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+#   - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+#   - sudo apt-get update -qq
+#   - sudo apt-get install -y -qq yarn
+
+install:
+  - cd server/ && gem install bundler && bundle install --deployment --without development production
+  # 29/12/2016: Only run Rails tests for now
+  #- cd ../client/ && yarn install
+script:
+  - cd server/ && bundle exec rspec spec
+  # 29/12/2016: Only run Rails tests for now
+  #- cd ../client/ && yarn test
+
+cache:
+  -bundler: true
+  -yarn: true
+  directories:
+    - server/vendor/bundle
+    - client/node_modules
