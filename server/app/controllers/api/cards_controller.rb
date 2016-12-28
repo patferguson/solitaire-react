@@ -1,6 +1,6 @@
 module Api
   class CardsController < Api::ApiController
-    before_action :set_card, only: [:show, :update, :destroy]
+    before_action :set_card, only: [:show, :update, :destroy, :attach_to_card]
 
     # GET /cards
     def index
@@ -37,6 +37,22 @@ module Api
     # DELETE /cards/1
     def destroy
       @card.destroy
+    end
+
+    # POST /cards/1/attach_to_card/2
+    def attach_to_card
+      new_parent_card = Card.find_by_id(params[:parent_card_id])
+
+      if new_parent_card
+        @card.parent_card = new_parent_card
+        if @card.save
+          render json: @card, status: :ok, location: [:api, @card]
+        else
+          render json: @card.errors, status: :unprocessable_entity
+        end
+      else
+        render json: {new_parent_card: "couldn't find new parent card id, retaining original parent"}, status: :unprocessable_entity
+      end
     end
 
     private

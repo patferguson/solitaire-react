@@ -25,5 +25,9 @@ RSpec.describe Api::CardsController, type: :routing do
     it "routes to #destroy" do
       expect(:delete => "/api/cards/1.json").to route_to("api/cards#destroy", :id => "1", :format => "json")
     end
+
+    it "routes to #attach_to_card" do
+      expect(:post => "/api/cards/1/attach_to_card/2.json").to route_to("api/cards#attach_to_card", id: "1", parent_card_id: "2", :format => "json")
+    end
   end
 end

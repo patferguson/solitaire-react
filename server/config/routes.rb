@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get 'version' => 'api#version', as: :version
     post 'ping' => 'api#ping', as: :ping
 
-    resources :cards
+    resources :cards do
+      member do
+        post 'attach_to_card/:parent_card_id' => 'cards#attach_to_card', as: :attach_to_card
+      end
+    end
   end
 end

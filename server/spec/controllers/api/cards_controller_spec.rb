@@ -166,4 +166,31 @@ RSpec.describe Api::CardsController, type: :controller do
     end
   end
 
+  describe "POST #attach_to_card" do
+    let(:card) { FactoryGirl.create(:card) }
+    let(:new_parent_card) { FactoryGirl.create(:card) }
+
+    it "attaches to the new card" do
+      post :attach_to_card, params: {id: card.to_param, parent_card_id: new_parent_card.to_param}, session: valid_session, format: "json"
+      card.reload
+      expect(card.parent_card).to eq(new_parent_card)
+    end
+
+    context "with an invalid parent_card_id" do
+      let(:invalid_parent_card_id) { 99999 }
+
+      it "returns an error response" do
+        post :attach_to_card, params: {id: card.to_param, parent_card_id: invalid_parent_card_id}, session: valid_session, format: "json"
+        card.reload
+        expect(response.status).to eq(Rack::Utils::SYMBOL_TO_STATUS_CODE[:unprocessable_entity])
+      end
+
+      it "keeps the original parent_card" do
+        original_parent_card = card.parent_card
+        post :attach_to_card, params: {id: card.to_param, parent_card_id: invalid_parent_card_id}, session: valid_session, format: "json"
+        card.reload
+        expect(card.parent_card).to eq(original_parent_card)
+      end
+    end
+  end
 end
