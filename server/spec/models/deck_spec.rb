@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe Deck, type: :model do
   let(:deck) { FactoryGirl.create(:deck_with_cards) }
 
+  it "has a valid first card" do
+    deck.save!
+    expect(deck.next_card).to be_present
+  end
+
   context "when shuffled" do
     it "has the same number of cards" do
       deck.save!
