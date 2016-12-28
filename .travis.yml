@@ -38,10 +38,10 @@ before_script:
 
 script:
   - cd server/
-  # Manually run db:migrate on the base database due to the older SQLite version used by Travis not supporting multi-INSERT statements as triggered during a migration
+  # Manually run db:create and db:migrate to generate a test database due to the older SQLite version used by Travis not supporting multi-INSERT statements as triggered during a migration
   # See here: https://github.com/rails/rails/issues/26948
+  - RAILS_ENV=test bundle exec rake db:create --trace
   - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
   - cd ../
 
