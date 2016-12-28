@@ -1,6 +1,11 @@
 language: ruby
 rvm: # See .ruby-version for ruby version to use through RVM
 
+env:
+  - DB=sqlite
+  - DB=postgresql
+  - DB=mysql
+
 sudo: false
 before_install:
   # Install node manually because Travis only supports one language definition
@@ -24,13 +29,18 @@ install:
   #- yarn install
   #- cd ../
 
+before_script:
+  # Initialise any available databases if needed
+  - psql -c 'create database solitaire_react_test' -U postgres
+  - mysql -e 'create database solitaire_react_test'
+
 script:
   - cd server/
   # Manually run db:migrate on the base database due to the older SQLite version used by Travis not supporting multi-INSERT statements as triggered during a migration
   # See here: https://github.com/rails/rails/issues/26948
-  - bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rspec spec
+  - bundle exec rspec spec/
   - cd ../
 
   # 29/12/2016: Only run Rails tests for now
