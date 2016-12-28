@@ -80,4 +80,16 @@ RSpec.describe Card, type: :model do
       expect(card_with_red_suit.suit_color).to eq(:red)
     end
   end
+
+  context "with a 'black' suit explicitely set" do
+    let(:card_with_red_suit) { FactoryGirl.build(:card, :with_red_suit) }
+
+    before(:each) do
+      card_with_red_suit.save!
+    end
+
+    it "has a 'black' suit" do
+      expect(card_with_red_suit.suit_color).to eq(:red)
+    end
+  end
 end

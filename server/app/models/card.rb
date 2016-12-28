@@ -68,11 +68,13 @@ class Card < ActiveRecord::Base
   ################
 
   def suit_color
+    # Presume black if unknown
+    out_suit_color = :black
     if self.suit.diamond? || self.suit.heart?
-      return :red
+      out_suit_color = :red
     elsif self.suit.club? || self.suit.spades?
-      return :black
+      out_suit_color = :black
     end
-    return :unknown
+    return out_suit_color
   end
 end
