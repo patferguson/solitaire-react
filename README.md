@@ -1,4 +1,8 @@
 # solitaire-react
+
+[![Travis CI Build Status: Master](https://travis-ci.org/patferguson/solitaire-react.svg?branch=master "Build status: master")](https://travis-ci.org/patferguson/solitaire-react.svg?branch=master)
+[![Coveralls Coverage Status: Master](https://coveralls.io/repos/github/patferguson/solitaire-react/badge.svg?branch=master "Coverage status: master")](https://coveralls.io/repos/github/patferguson/solitaire-react/badge.svg?branch=master)
+
 Learning React + Rails development through creating a simple Solitaire browser game.
 
 ## Running the project
