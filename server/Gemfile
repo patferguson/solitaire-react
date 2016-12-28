@@ -39,6 +39,9 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.8'
   # Use Faker to assist with mocking data for test objects
   gem 'faker', '~> 1.7'
+
+  # Code coverage monitoring via https://coveralls.io/
+  gem 'coveralls', '~> 0.8'
 end
 
 group :development do
