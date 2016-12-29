@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :decks
+    resources :decks do
+      member do
+        post 'shuffle_deck' => 'decks#shuffle_deck', as: :shuffle_deck
+      end
+    end
   end
 end

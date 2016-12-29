@@ -18,7 +18,7 @@ class Card < ActiveRecord::Base
     super(attributes)
 
     # This score will be used to sort cards in a given deck
-    self.sort_weight ||= rand(0..1000000)
+    self.sort_weight ||= Card.random_sort_weight
   end
 
   # Class Methods
@@ -30,6 +30,10 @@ class Card < ActiveRecord::Base
 
   def self.suit_types
     return [:diamond, :club, :heart, :spades]
+  end
+
+  def self.random_sort_weight
+    return rand(0..1000000)
   end
 
   # Enumerations

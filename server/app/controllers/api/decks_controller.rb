@@ -1,6 +1,6 @@
 module Api
   class DecksController < ApiController
-    before_action :set_deck, only: [:show, :update, :destroy]
+    before_action :set_deck, only: [:show, :update, :destroy, :shuffle_deck]
 
     # GET /decks
     def index
@@ -37,6 +37,17 @@ module Api
     # DELETE /decks/1
     def destroy
       @deck.destroy
+    end
+
+    # POST /decks/1/shuffle_deck
+    def shuffle_deck
+      @deck.cards.each do |card|
+        # Re-random the sort order value of each card
+        card.sort_weight = Card.random_sort_weight
+      end
+      @deck.save!
+
+      render json: @deck
     end
 
     private
