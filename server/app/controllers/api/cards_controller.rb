@@ -6,7 +6,7 @@ module Api
     def index
       @cards = Card.all
 
-      render json: @cards.map { |card| CardSerializer.new(card) }.as_json
+      render json: @cards.map { |card| CardSerializer.new(card) }
     end
 
     # GET /api/cards/:id

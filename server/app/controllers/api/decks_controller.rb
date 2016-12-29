@@ -6,7 +6,7 @@ module Api
     def index
       @decks = Deck.all
 
-      render json: @decks.map { |deck| DeckSerializer.new(deck) }.as_json
+      render json: @decks.map { |deck| DeckSerializer.new(deck) }
     end
 
     # GET /api/decks/:id
