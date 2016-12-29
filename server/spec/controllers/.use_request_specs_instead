@@ -1,0 +1,3 @@
+# Request specs should be used rather than controller specs to better simulate how an
+# external user would interact with the API, cover the routes file, and reduce coupling.
+# See: https://everydayrails.com/2016/08/29/replace-rspec-controller-tests.html

@@ -1,5 +1,6 @@
 module Api
   class ApiController < ApplicationController
+    # GET /api/version
     def version
       version_data = {
         version: APP_VERSION,
@@ -8,6 +9,7 @@ module Api
       render status: 200, json: version_data
     end
 
+    # POST /api/ping
     def ping
       filtered_params = ping_params
       if (filtered_params[:ping_message] == "Ping!")

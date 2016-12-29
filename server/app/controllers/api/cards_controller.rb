@@ -2,19 +2,19 @@ module Api
   class CardsController < ApiController
     before_action :set_card, only: [:show, :update, :destroy, :attach_to_card]
 
-    # GET /cards
+    # GET /api/cards
     def index
       @cards = Card.all
 
       render json: @cards
     end
 
-    # GET /cards/1
+    # GET /api/cards/:id
     def show
       render json: @card
     end
 
-    # POST /cards
+    # POST /api/cards
     def create
       @card = Card.new(card_params)
 
@@ -25,7 +25,7 @@ module Api
       end
     end
 
-    # PATCH/PUT /cards/1
+    # PATCH/PUT /api/cards/:id
     def update
       if @card.update(card_params)
         render json: @card
@@ -34,12 +34,12 @@ module Api
       end
     end
 
-    # DELETE /cards/1
+    # DELETE /api/cards/:id
     def destroy
       @card.destroy
     end
 
-    # POST /cards/1/attach_to_card/2
+    # POST /api/cards/:id/attach_to_card/:parent_card_id
     def attach_to_card
       new_parent_card = Card.find_by_id(params[:parent_card_id])
 

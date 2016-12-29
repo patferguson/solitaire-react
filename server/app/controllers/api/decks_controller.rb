@@ -2,19 +2,19 @@ module Api
   class DecksController < ApiController
     before_action :set_deck, only: [:show, :update, :destroy, :shuffle_deck]
 
-    # GET /decks
+    # GET /api/decks
     def index
       @decks = Deck.all
 
       render json: @decks
     end
 
-    # GET /decks/1
+    # GET /api/decks/:id
     def show
       render json: @deck
     end
 
-    # POST /decks
+    # POST /api/decks
     def create
       @deck = Deck.new(deck_params)
 
@@ -25,7 +25,7 @@ module Api
       end
     end
 
-    # PATCH/PUT /decks/1
+    # PATCH/PUT /api/decks/:id
     def update
       if @deck.update(deck_params)
         render json: @deck
@@ -34,12 +34,12 @@ module Api
       end
     end
 
-    # DELETE /decks/1
+    # DELETE /api/decks/:id
     def destroy
       @deck.destroy
     end
 
-    # POST /decks/1/shuffle_deck
+    # POST /api/decks/:id/shuffle_deck
     def shuffle_deck
       @deck.cards.each do |card|
         # Re-random the sort order value of each card
