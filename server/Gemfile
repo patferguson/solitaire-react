@@ -30,6 +30,9 @@ gem 'foreman', '~> 0.82.0'
 # Use Enumerize to provide a cleaner wrapper around typed enum/string data.
 gem 'enumerize', '~> 2.0'
 
+# Use ActiveModelSerializers to provide control over generating JSON from Models
+gem 'active_model_serializers', '~> 0.10'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
