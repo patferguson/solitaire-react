@@ -25,7 +25,12 @@ class Card < ActiveRecord::Base
   ###############
 
   def self.face_value_range
-    return [*0..13]
+    return 0..13
+  end
+
+  # Returns an array of all possible face values
+  def self.possible_face_values
+    return Card.face_value_range.to_a
   end
 
   def self.suit_types
@@ -34,6 +39,20 @@ class Card < ActiveRecord::Base
 
   def self.random_sort_weight
     return rand(0..1000000)
+  end
+
+  # Builds a collection of all of the cards for each suit and returns
+  def self.build_full_card_set
+    cards = Card.suit_types.map { |suit|
+        Card.possible_face_values.map { |face_value|
+          Card.new({
+            suit: suit,
+            face_value: face_value,
+            is_flipped_up: false,
+          })
+        }
+      }.flatten
+    return cards
   end
 
   # Enumerations
@@ -50,7 +69,7 @@ class Card < ActiveRecord::Base
 
   # Index: 0 1 2 3 4 5 6 7 8 9 10 11 12 13
   #  Card: A 1 2 3 4 5 6 7 8 9 10 J  Q  K
-  validates_inclusion_of :face_value, :in => Card.face_value_range, :allow_blank => true, :message => "must have a face value from Ace through to King (0-13)"
+  validates_inclusion_of :face_value, :in => Card.possible_face_values, :allow_blank => true, :message => "must have a face value from Ace through to King (0-13)"
 
   validates_presence_of :sort_weight, :if => Proc.new { |card| card.deck.present? }
 

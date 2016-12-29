@@ -92,4 +92,19 @@ RSpec.describe Card, type: :model do
       expect(card_with_red_suit.suit_color).to eq(:red)
     end
   end
+
+  context "when generating a full set of cards" do
+    before(:each) do
+      @cards = Card.build_full_card_set
+    end
+
+    it "has a full set of cards" do
+      expect(@cards.size).to eq(Card.suit_types.size * Card.possible_face_values.size)
+    end
+
+    it "creates valid cards" do
+      has_invalid_card = @cards.any? { |card| !card.valid? }
+      expect(has_invalid_card).to eq(false)
+    end
+  end
 end

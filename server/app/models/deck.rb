@@ -17,6 +17,7 @@ class Deck < ApplicationRecord
     return self.cards.first
   end
 
+  # Returns the cards in the deck in shuffled order, cards must first be persisted to the database
   def shuffled_cards
     return self.cards.order(:sort_weight => :asc)
   end
