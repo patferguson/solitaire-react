@@ -24,7 +24,7 @@ RSpec.describe "Api", type: :request do
       expect(response.body).to include('Pong!')
     end
 
-    it "returns http bad_request on sending an unknown Ping message" do
+    it "returns http unprocessable_entity on sending an unknown Ping message" do
       post api_ping_path(ping_message: "ASDSADAD!", format: "json")
       expect(response).to have_http_status(:unprocessable_entity)
     end
