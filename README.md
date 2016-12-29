@@ -5,6 +5,15 @@
 
 Learning React + Rails development through creating a simple Solitaire browser game.
 
+## Setting up the project
+First, install [Ruby Version Manager - RVM](https://rvm.io/) and [Node Version Manager - NVM](https://github.com/creationix/nvm) to allow for Ruby and Node to be installed.
+
+From the base project directory, run `rvm use $(< .ruby-version) --install && nvm install && nvm use` to install the versions of specified in *.ruby-version* and *.nvmrc* respectively.
+
+For managing Node packages, install [Yarn](https://yarnpkg.com/).
+
+To install dependencies, run `cd server/ && bundle install && cd ../client && yarn install && cd ../`
+
 ## Running the project
 Foreman is used to synchronise the execution of the Rails and React Webpack servers.
 
