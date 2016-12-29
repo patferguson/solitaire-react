@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Ping from './Ping.jsx';
-import APIVersion from './APIVersion.jsx';
+import Ping from '../Ping';
+import APIVersion from '../APIVersion';
 
 class App extends Component {
   render() {
