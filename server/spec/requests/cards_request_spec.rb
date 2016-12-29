@@ -29,7 +29,7 @@ RSpec.describe "Cards", type: :request do
   describe "GET /api/cards/:id" do
     it "responds with the requested card" do
       get api_card_path(id: card.to_param, session: valid_session, format: "json")
-      expect(response.body).to eq(card.to_json)
+      expect(response.body).to eq(CardSerializer.new(card).to_json)
     end
   end
 

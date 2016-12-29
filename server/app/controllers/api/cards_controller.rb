@@ -6,12 +6,12 @@ module Api
     def index
       @cards = Card.all
 
-      render json: @cards
+      render json: @cards.map { |card| CardSerializer.new(card) }.as_json
     end
 
     # GET /api/cards/:id
     def show
-      render json: @card
+      render json: CardSerializer.new(@card).as_json
     end
 
     # POST /api/cards
@@ -19,7 +19,7 @@ module Api
       @card = Card.new(card_params)
 
       if @card.save
-        render json: @card, status: :created, location: [:api, @card]
+        render json: CardSerializer.new(@card).as_json, status: :created, location: [:api, @card]
       else
         render json: @card.errors, status: :unprocessable_entity
       end
@@ -28,7 +28,7 @@ module Api
     # PATCH/PUT /api/cards/:id
     def update
       if @card.update(card_params)
-        render json: @card
+        render json: CardSerializer.new(@card).as_json
       else
         render json: @card.errors, status: :unprocessable_entity
       end
@@ -46,7 +46,7 @@ module Api
       if new_parent_card
         @card.parent_card = new_parent_card
         if @card.save
-          render json: @card, status: :ok, location: [:api, @card]
+          render json: CardSerializer.new(@card).as_json, status: :ok, location: [:api, @card]
         else
           render json: @card.errors, status: :unprocessable_entity
         end

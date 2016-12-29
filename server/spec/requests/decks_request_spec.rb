@@ -32,7 +32,7 @@ RSpec.describe "Decks", type: :request do
   describe "GET /api/decks/:id" do
     it "responds with the requested deck" do
       get api_deck_path(id: deck.to_param, session: valid_session, format: "json")
-      expect(response.body).to eq(deck.to_json)
+      expect(response.body).to eq(DeckSerializer.new(deck).to_json)
     end
   end
 
@@ -77,6 +77,13 @@ RSpec.describe "Decks", type: :request do
         put api_deck_path(id: deck.to_param, deck: new_attributes, session: valid_session, format: "json")
         deck.reload
         expect(deck.cards.count).to be > old_card_count
+      end
+
+      it "responds including the new card" do
+        put api_deck_path(id: deck.to_param, deck: new_attributes, session: valid_session, format: "json")
+        expect(response.body).to include(new_card_attributes[:suit].to_s)
+        expect(response.body).to include(new_card_attributes[:face_value].to_s)
+        expect(response.body).to include(new_card_attributes[:sort_weight].to_s)
       end
 
       it "returns a successful response" do

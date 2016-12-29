@@ -6,12 +6,12 @@ module Api
     def index
       @decks = Deck.all
 
-      render json: @decks
+      render json: @decks.map { |deck| DeckSerializer.new(deck) }.as_json
     end
 
     # GET /api/decks/:id
     def show
-      render json: @deck
+      render json: DeckSerializer.new(@deck).as_json
     end
 
     # POST /api/decks
@@ -19,7 +19,7 @@ module Api
       @deck = Deck.new(deck_params)
 
       if @deck.save
-        render json: @deck, status: :created, location: [:api, @deck]
+        render json: DeckSerializer.new(@deck).as_json, status: :created, location: [:api, @deck]
       else
         render json: @deck.errors, status: :unprocessable_entity
       end
@@ -28,7 +28,7 @@ module Api
     # PATCH/PUT /api/decks/:id
     def update
       if @deck.update(deck_params)
-        render json: @deck
+        render json: DeckSerializer.new(@deck).as_json
       else
         render json: @deck.errors, status: :unprocessable_entity
       end
@@ -47,7 +47,7 @@ module Api
       end
       @deck.save!
 
-      render json: @deck
+      render json: DeckSerializer.new(@deck).as_json
     end
 
     private
