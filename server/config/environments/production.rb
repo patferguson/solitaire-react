@@ -53,7 +53,7 @@ Rails.application.configure do
 
   # ActionMailer configuration
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: URL_HOST, port: 3000 }
+  config.action_mailer.default_url_options = { host: URL_HOST, port: APP_PORT }
 
   # TODO: Configure an exception mailer to mail through about errors caught on Production configuration machines.
 
