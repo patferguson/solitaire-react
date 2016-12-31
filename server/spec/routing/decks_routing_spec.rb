@@ -27,5 +27,9 @@ RSpec.describe Api::DecksController, type: :routing do
       expect(:delete => "/api/decks/1.json").to route_to("api/decks#destroy", :id => "1", format: "json")
     end
 
+    it "routes to #shuffle_deck" do
+      expect(:post => "/api/decks/1/shuffle_deck.json").to route_to("api/decks#shuffle_deck", :id => "1", format: "json")
+    end
+
   end
 end
