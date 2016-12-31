@@ -21,11 +21,20 @@ Execute this command from the base project directory to start the React Webpack 
 
 `foreman start -f Procfile.dev -p 3000`
 
-## Building the project for deployment
+## Deployment
+### Building the project for deployment
 
-*This section is WIP*
+**This section is WIP**
 
-Run `yarn run build` from the *client/* directory to generate a *build/* folder containing the compiled project assets, these static files may then be served via a HTTP server for access by end users on the web.
+Run `yarn run build` from the **client/** directory to generate a **build/** folder containing the compiled project assets, these static files may then be served via a HTTP server for access by end users on the web.
+
+The environment serving both the built React content and the Rails API **must** support HTTPS to ensure security for end users. HTTPS is forced for the Production Rails API configuration.
+
+### Environment variables
+See Production.rb, these environment values must be set on both the machine running the server and any workers processing jobs:
+
+* `URL_HOST` - E.g. 'example.com', used for link generation in the app and mailers.
+* `PORT` - E.g. '3000', used for link generation and for configuring the application server.
 
 ## References & Acknowledgements
 The React component of this project was created using a base of Facebook's [create-react-app](https://github.com/facebookincubator/create-react-app).

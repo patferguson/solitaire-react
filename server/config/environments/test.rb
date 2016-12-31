@@ -1,4 +1,7 @@
 Rails.application.configure do
+  URL_HOST = ENV['URL_HOST'] || 'localhost'
+  APP_PORT = ENV['PORT'] || 3000
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
@@ -27,7 +30,10 @@ Rails.application.configure do
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
+
+  # ActionMailer configuration
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: URL_HOST, port: PORT }
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
