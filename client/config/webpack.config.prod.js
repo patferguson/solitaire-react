@@ -117,7 +117,8 @@ module.exports = {
           /\.(js|jsx)$/,
           /\.(css|scss)$/,
           /\.json$/,
-          /\.svg$/
+          /\.(png|jpg|svg)$/, // Images
+          /\.(svg|woff|woff2|ttf|eot)$/, // Fonts
         ],
         loader: 'url',
         query: {
@@ -159,14 +160,28 @@ module.exports = {
         test: /\.json$/,
         loader: 'json'
       },
-      // "file" loader for svg
+      // Loaders for images, 'url-loader' turns files smaller than the input byte limit to a data-url to improve load times
       {
-        test: /\.svg$/,
-        loader: 'file',
-        query: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      }
+        test: /\.(png|jpg)$/,
+        loader: "url-loader?limit=100000"
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
+      },
+      // Loaders for fonts
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file'
+      },
     ]
   },
 

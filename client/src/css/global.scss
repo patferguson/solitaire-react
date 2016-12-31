@@ -1,0 +1,5 @@
+// This file is included across the whole application and should describe site-wide styles.
+// If possible, localise styles to the components that use them rather than adding declarations to this file.
+
+@import 'bootstrap-custom-variables';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
