@@ -14,21 +14,21 @@ before_install:
   - nvm install # This should pick up the version from .nvmrc
   - nvm use # Select the .nvmrc version for use
 
-  # 29/12/2016: Only run Rails tests for now
-  # # Yarn installation, can be run with sudo: false above
-  # - curl -o- -L https://yarnpkg.com/install.sh | bash
-  # - export PATH=$HOME/.yarn/bin:$PATH
+  # Yarn installation, can be run with sudo: false above
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
 
 install:
+  # Rails tests
   - cd server/
   - gem install bundler
   - bundle install --deployment --without development production
   - cd ../
 
-  # 29/12/2016: Only run Rails tests for now
-  #- cd client/
-  #- yarn install
-  #- cd ../
+  # Yarn tests
+  - cd client/
+  - yarn install
+  - cd ../
 
 before_script:
   # Ensure the correct statements in the env section are also uncommented depending on which database engine is in use
@@ -37,6 +37,7 @@ before_script:
   #- mysql -e 'create database solitaire_react_test'
 
 script:
+  # Rails tests
   - cd server/
   # Manually run db:create and db:migrate to generate a test database due to the older SQLite version used by Travis not supporting multi-INSERT statements as triggered during a migration
   # See here: https://github.com/rails/rails/issues/26948
@@ -45,10 +46,11 @@ script:
   - bundle exec rspec spec/
   - cd ../
 
-  # 29/12/2016: Only run Rails tests for now
-  #- cd client/
-  #- yarn test
-  #- cd ../
+  # Yarn tests
+  - cd client/
+  - yarn test
+  - yarn run build
+  - cd ../
 
 cache:
   -bundler: true
