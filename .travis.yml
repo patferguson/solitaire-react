@@ -1,12 +1,13 @@
 language: ruby
-rvm: # See .ruby-version for ruby version to use through RVM
+# rvm: # See .ruby-version for ruby version to use through RVM
 
 env:
-  - DB=sqlite
-  # Ensure the correct statements in the before_script section are also uncommented depending on which database engine is in use
-  #- DB=postgresql
-  #- DB=mysql
   global:
+    - DB=sqlite
+    # Ensure the correct statements in the before_script section are also uncommented depending on which database engine is in use, since this is in the global: section, only have one of these or move to the matrix: section.
+    # See: https://docs.travis-ci.com/user/environment-variables/
+    #- DB=postgresql
+    #- DB=mysql
     # Resolves a SASS binding generation issue: https://github.com/sass/node-sass/issues/532
     - SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=true
 
@@ -33,11 +34,11 @@ install:
   - yarn install
   - cd ../
 
-before_script:
-  # Ensure the correct statements in the env section are also uncommented depending on which database engine is in use
-  # # Initialise any available databases if needed
-  #- psql -c 'create database solitaire_react_test' -U postgres
-  #- mysql -e 'create database solitaire_react_test'
+# before_script:
+#   # Ensure the correct statements in the env section are also uncommented depending on which database engine is in use
+#   # Initialise any available databases if needed
+#   - psql -c 'create database solitaire_react_test' -U postgres
+#   - mysql -e 'create database solitaire_react_test'
 
 script:
   # Rails tests
@@ -61,8 +62,8 @@ script:
   - cd ../
 
 cache:
-  -bundler: true
-  -yarn: true
+  bundler: true
   directories:
     - server/vendor/bundle
     - client/node_modules
+    - $HOME/.yarn-cache
