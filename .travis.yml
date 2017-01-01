@@ -8,8 +8,6 @@ env:
     # See: https://docs.travis-ci.com/user/environment-variables/
     #- DB=postgresql
     #- DB=mysql
-    # Resolves a SASS binding generation issue: https://github.com/sass/node-sass/issues/532
-    - SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=true
 
 sudo: false
 before_install:
@@ -32,6 +30,9 @@ install:
   # Yarn tests
   - cd client/
   - yarn install
+  # Fixes an issue with node-sass not generating bindings for the OS
+  # See: https://github.com/sass/node-sass/issues/1579
+  - npm rebuild node-sass
   - cd ../
 
 # before_script:
