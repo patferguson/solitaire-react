@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Card, type: :model do
   let(:card) { FactoryGirl.build(:card) }
@@ -99,7 +99,9 @@ RSpec.describe Card, type: :model do
     end
 
     it "has a full set of cards" do
-      expect(@cards.size).to eq(Card.suit_types.size * Card.possible_face_values.size)
+      expect(@cards.size).to eq(
+        Card.suit_types.size * Card.possible_face_values.size
+      )
     end
 
     it "creates valid cards" do
