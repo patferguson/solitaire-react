@@ -6,6 +6,9 @@ env:
   # Ensure the correct statements in the before_script section are also uncommented depending on which database engine is in use
   #- DB=postgresql
   #- DB=mysql
+  global:
+    # Resolves a SASS binding generation issue: https://github.com/sass/node-sass/issues/532
+    - SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=true
 
 sudo: false
 before_install:
