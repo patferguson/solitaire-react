@@ -48,7 +48,8 @@ script:
 
   # Yarn tests
   - cd client/
-  - yarn test
+  # Pipe yarn test coverage lcov.info results into coveralls
+  - yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - yarn run build
   - cd ../
 
