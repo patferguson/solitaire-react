@@ -5,6 +5,7 @@ import './App.scss';
 
 import Ping from '../Ping';
 import APIVersion from '../APIVersion';
+import ReactComponentsTest from '../ReactComponentsTest';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <p>Print icon: <span className="glyphicon glyphicon-print"></span></p>
         </div>
 
+        <ReactComponentsTest />
         <Ping />
         <APIVersion />
       </div>
