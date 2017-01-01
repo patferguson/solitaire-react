@@ -16,12 +16,14 @@ class App extends Component {
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-          <p>Bootstrap Glyphicons:
-            <p>Envelope icon: <span className="glyphicon glyphicon-envelope"></span></p>
-            <p>Search icon: <span className="glyphicon glyphicon-search"></span></p>
-            <p>Print icon: <span className="glyphicon glyphicon-print"></span></p>
-          </p>
         </p>
+
+        <div>
+          <p>Bootstrap Glyphicons:</p>
+          <p>Envelope icon: <span className="glyphicon glyphicon-envelope"></span></p>
+          <p>Search icon: <span className="glyphicon glyphicon-search"></span></p>
+          <p>Print icon: <span className="glyphicon glyphicon-print"></span></p>
+        </div>
 
         <Ping />
         <APIVersion />
