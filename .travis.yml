@@ -66,4 +66,6 @@ cache:
   directories:
     - server/vendor/bundle
     - client/node_modules
+    - $HOME/.node-gyp
+    - $HOME/.npm
     - $HOME/.yarn-cache
