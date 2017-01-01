@@ -55,8 +55,8 @@ script:
 
   # Yarn tests
   - cd client/
-  # Pipe yarn test coverage lcov.info results into coveralls
-  - yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  # Pipe javascript test coverage lcov.info results into coveralls
+  - node scripts/test.js --coverage --env=jsdom && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - yarn run build
   # Run snyk to test for Javascript package dependency vulnerabilities
   - ./node_modules/.bin/snyk test
