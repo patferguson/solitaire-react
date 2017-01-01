@@ -2,10 +2,11 @@
   "rules": {},
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "commonjs": true
   },
   "extends": [
     "react-app",
-    "eslint:recommended",
-  ],
+    "eslint:recommended"
+  ]
 }
