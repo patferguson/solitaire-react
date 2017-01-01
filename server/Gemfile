@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -19,8 +19,14 @@ gem 'puma', '~> 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# To use this: "If you're working with Rails 5, un-comment out the rack-cors gem from your Gemfile and bundle install. Then, open up `config/initializers/cors.rb`, which was provided for you. Uncomment out the content of that file and specify your allowed origins."
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making
+# cross-origin AJAX possible
+#
+# To use this: "If you're working with Rails 5, un-comment out the
+# rack-cors gem from your Gemfile and bundle install. Then, open up
+# `config/initializers/cors.rb`, which was provided for you.
+# Uncomment out the content of that file and specify your allowed origins."
+#
 # gem 'rack-cors'
 
 # Use Foreman for starting both the Rails and React Webpack servers locally
@@ -32,11 +38,15 @@ gem 'enumerize', '~> 2.0'
 # Use ActiveModelSerializers to provide control over generating JSON from Models
 gem 'active_model_serializers', '~> 0.10'
 
-# Use bcrypt for encrypting user passwords to store in the database, used for ActiveModel has_secure_password
+# Use bcrypt for encrypting user passwords to store in the database
+# used for ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1'
 
+# Use rubocop for linting Ruby code
+gem 'rubocop', '~> 0.46'
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
   # Use RSpec as the rails test runner https://github.com/rspec/rspec-rails
@@ -52,7 +62,8 @@ end
 
 group :development do
   gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in
+  # the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

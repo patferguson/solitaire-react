@@ -3,3 +3,5 @@ eslint:
   config_file: .eslintrc
 scss:
   config_file: .sass-lint.yml
+ruby:
+  config_file: .rubocop.yml
