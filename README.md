@@ -2,6 +2,7 @@
 
 [![Travis CI Build Status: Master](https://travis-ci.org/patferguson/solitaire-react.svg?branch=master "Build status: master")](https://travis-ci.org/patferguson/solitaire-react)
 [![Coveralls Coverage Status: Master](https://coveralls.io/repos/github/patferguson/solitaire-react/badge.svg?branch=master "Coverage status: master")](https://coveralls.io/github/patferguson/solitaire-react/)
+[![Code Climate Status: Master](https://codeclimate.com/github/patferguson/solitaire-react/badges/gpa.svg)](https://codeclimate.com/github/patferguson/solitaire-react)
 [![Inch Inline Docs Status: Master](https://inch-ci.org/github/patferguson/solitaire-react.svg?branch=master)](http://inch-ci.org/github/patferguson/solitaire-react)
 
 Learning React + Rails development through creating a simple Solitaire browser game.
