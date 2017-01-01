@@ -44,7 +44,7 @@ script:
   - RAILS_ENV=test bundle exec rake db:create --trace
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rspec spec/
-  # Run snyk to test for Ruby package vulnerabilities
+  # Run snyk to test for Ruby gem dependency vulnerabilities
   - ../client/node_modules/.bin/snyk test
   - cd ../
 
@@ -53,7 +53,7 @@ script:
   # Pipe yarn test coverage lcov.info results into coveralls
   - yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - yarn run build
-  # Run snyk to test for Javascript package vulnerabilities
+  # Run snyk to test for Javascript package dependency vulnerabilities
   - ./node_modules/.bin/snyk test
   - cd ../
 
