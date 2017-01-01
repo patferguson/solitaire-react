@@ -1,0 +1,9 @@
+# Code documentation monitoring. See: https://inch-ci.org/github/patferguson/solitaire-react
+files:
+  # Define files included in the analysis (defaults to ["{app,lib}/**/*.rb"])
+  included:
+    - server/**/*.rb
+    - client/**/*.js # Javascript support for Inch still seems WIP
+  # Define files excluded from the analysis (defaults to [])
+  excluded:
+    # - plugins/vendor/sparkr/sparkr.rb
