@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { IndexLinkContainer } from 'react-router-bootstrap'
 import { Button } from 'react-bootstrap'
 
-import APIVersion from '../App'
+import APIVersion from '../components/APIVersion'
 
 class About extends Component {
   render() {
