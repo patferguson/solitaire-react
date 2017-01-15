@@ -34,7 +34,7 @@ class Card < ActiveRecord::Base
   end
 
   def self.suit_types
-    return [:diamond, :club, :heart, :spades]
+    return [:diamond, :club, :heart, :spade]
   end
 
   def self.random_sort_weight
@@ -95,7 +95,7 @@ class Card < ActiveRecord::Base
     out_suit_color = :black
     if self.suit.diamond? || self.suit.heart?
       out_suit_color = :red
-    elsif self.suit.club? || self.suit.spades?
+    elsif self.suit.club? || self.suit.spade?
       out_suit_color = :black
     end
     return out_suit_color
