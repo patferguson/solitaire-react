@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :card do
-    suit [:diamond, :club, :heart, :spades].sample
+    suit [:diamond, :club, :heart, :spade].sample
     face_value Faker::Number.between(0, 13)
     is_flipped_up Faker::Boolean.boolean
 
@@ -13,7 +13,7 @@ FactoryGirl.define do
     end
 
     trait :with_black_suit do
-      suit [:club, :spades].sample
+      suit [:club, :spade].sample
     end
 
     trait :with_red_suit do
