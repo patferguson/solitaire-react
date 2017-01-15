@@ -9,6 +9,7 @@ import logo from './logo.svg';
 import Ping from '../../components/Ping';
 import APIVersion from '../../components/APIVersion';
 import ReactComponentsTest from '../../components/ReactComponentsTest';
+import Card from '../../components/Card';
 
 class Home extends Component {
   render() {
@@ -36,6 +37,7 @@ class Home extends Component {
         <ReactComponentsTest />
         <Ping />
         <APIVersion />
+        <Card suit='spade' faceValue={0} />
       </div>
     );
   }
