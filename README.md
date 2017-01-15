@@ -38,6 +38,7 @@ See Production.rb, these environment values must be set on both the machine runn
 * `URL_HOST` - E.g. 'example.com', used for link generation in the app and mailers.
 * `PORT` - E.g. '3000', used for link generation and for configuring the application server.
 * `NODE_ENV` - E.g. 'production', used to configure React and Webpack generation.
+* `SECRET_KEY_BASE` - See `server/config/secrets.yml`, generate this value with `rake secret` from the `server/` folder.
 
 ## References & Acknowledgements
 The React component of this project was created using a base of Facebook's [create-react-app](https://github.com/facebookincubator/create-react-app).
