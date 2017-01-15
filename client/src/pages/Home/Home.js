@@ -6,9 +6,9 @@ import './Home.scss';
 
 import logo from './logo.svg';
 
-import Ping from '../components/Ping';
-import APIVersion from '../components/APIVersion';
-import ReactComponentsTest from '../components/ReactComponentsTest';
+import Ping from '../../components/Ping';
+import APIVersion from '../../components/APIVersion';
+import ReactComponentsTest from '../../components/ReactComponentsTest';
 
 class Home extends Component {
   render() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import APIClient from '../../../api/APIClient';
+import APIClient from '../../api/APIClient';
 import _ from 'lodash';
 
 class APIVersion extends Component {
