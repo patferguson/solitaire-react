@@ -25,9 +25,16 @@ class Home extends Component {
 
         <div>
           <p>Bootstrap Glyphicons:</p>
-          <p>Envelope icon: <span className="glyphicon glyphicon-envelope"></span></p>
-          <p>Search icon: <span className="glyphicon glyphicon-search"></span></p>
-          <p>Print icon: <span className="glyphicon glyphicon-print"></span></p>
+          <p>Envelope icon: <span className="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
+          <p>Search icon: <span className="glyphicon glyphicon-search" aria-hidden="true"></span></p>
+          <p>Print icon: <span className="glyphicon glyphicon-print" aria-hidden="true"></span></p>
+        </div>
+
+        <div>
+          <p>Font Awesome Icons:</p>
+          <p>Envelope icon: <span className="fa fa-envelope" aria-hidden="true"></span></p>
+          <p>Search icon: <span className="fa fa-search" aria-hidden="true"></span></p>
+          <p>Print icon: <span className="fa fa-print" aria-hidden="true"></span></p>
         </div>
 
         <LinkContainer to={{ pathname: '/about' }}>

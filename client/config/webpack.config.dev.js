@@ -111,8 +111,10 @@ module.exports = {
           /\.(js|jsx)$/,
           /\.(css|scss)$/,
           /\.json$/,
-          /\.(png|jpg|svg)$/, // Images
-          /\.(svg|woff|woff2|ttf|eot)$/, // Fonts
+          // Images
+          /\.(png|jpg|svg)$/,
+          // Fonts with optional version string as used in some libraries such as font-awesome
+          /\.(svg|woff2?|ttf|eot)(\?v=\d+(?:\.\d)*)?$/,
         ],
         loader: 'url',
         query: {
@@ -154,24 +156,27 @@ module.exports = {
       },
       // Loaders for images, 'url-loader' turns files smaller than the input byte limit to a data-url to improve load times
       {
-        test: /\.(png|jpg)$/,
-        loader: "url-loader?limit=100000"
+        test: /\.(png|jpg)$/, // Handles .png, .jpg, .jpeg
+        loader: "url?limit=100000"
       },
       {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        // The ?v=\d+(?:\.\d)* part handles v=0, v=0.1, v=0.0.1, etc.
+        // It uses a non-capturing group of '.[0-9]' that may occur 0+ times.
+        test: /\.svg(\?v=\d+(?:\.\d)*)?$/, // Handles .svg, .svg?v=0.2.3
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       },
       // Loaders for fonts
       {
-        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.woff2?(\?v=\d+(?:\.\d)*)?$/, // Handles .woff, .woff2, and the ?v=0.3.2
         loader: 'url?limit=10000&mimetype=application/font-woff'
       },
       {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.ttf(\?v=\d+(?:\.\d)*)?$/,
         loader: 'url?limit=10000&mimetype=application/octet-stream'
       },
       {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        // Seems to only be supported by Internet Explorer: https://en.wikipedia.org/wiki/Embedded_OpenType
+        test: /\.eot(\?v=\d+(?:\.\d)*)?$/,
         loader: 'file'
       },
     ]
