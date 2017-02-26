@@ -5,6 +5,7 @@ import App from '../App'
 import NotFound from '../NotFound'
 import Home from '../Home'
 import About from '../About'
+import Testing from '../Testing'
 
 class Routes extends Component {
   render() {
@@ -13,6 +14,7 @@ class Routes extends Component {
         <Route path="/" component={App}>
           <IndexRoute component={Home}/>
           <Route path="about" component={About}/>
+          <Route path="testing" component={Testing}/>
           <Route path="*" component={NotFound}/>
         </Route>
       </Router>

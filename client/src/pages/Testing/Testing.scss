@@ -1,26 +1,26 @@
 $header-background-color: #222;
 
-.Home {
+.Testing {
   text-align: center;
 }
 
-.Home-logo {
-  animation: Home-logo-spin infinite 20s linear;
+.Testing-logo {
+  animation: Testing-logo-spin infinite 20s linear;
   height: 80px;
 }
 
-.Home-header {
+.Testing-header {
   background-color: $header-background-color;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
-.Home-intro {
+.Testing-intro {
   font-size: large;
 }
 
-@keyframes Home-logo-spin {
+@keyframes Testing-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
