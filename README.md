@@ -16,6 +16,8 @@ For managing Node packages, install [Yarn](https://yarnpkg.com/).
 
 To install dependencies, run `cd server/ && bundle install && cd ../client && yarn install && cd ../`
 
+Use `rake secret` to generate the `secret_key_base` values for `development` and `test` in `server/config/secrets.yml`. This file is in the .gitignore for the project so you will have to do this for each new clone of the repository.
+
 ## Running the project
 Foreman is used to synchronise the execution of the Rails and React Webpack servers.
 

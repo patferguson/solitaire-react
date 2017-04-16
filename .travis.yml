@@ -25,6 +25,8 @@ install:
   - cd server/
   - gem install bundler
   - bundle install --deployment --without development production
+  # Set up secrets.yml environment variable for test configuration
+  - export TEST_SECRET_KEY_BASE=`bundle exec rake secret`
   - cd ../
 
   # Yarn tests
