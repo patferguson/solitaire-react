@@ -3,7 +3,7 @@ version: v1.7.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-RUBY-NOKOGIRI-20299:
-    - '* > active_model_serializers@0.10.3':
-        reason: None given
+    - '*':
+        reason: 'No upstream fix available'
         expires: '2017-05-16T07:55:25.532Z'
 patch: {}
