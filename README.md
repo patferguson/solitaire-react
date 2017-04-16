@@ -25,6 +25,12 @@ Execute this command from the base project directory to start the React Webpack 
 
 `foreman start -f Procfile.dev -p 3000`
 
+## Testing
+
+### Travis CI configuration
+
+This project uses Snyk to determine when security vulnerabilities have been found in relevant dependencies. See [CI Integration | Snyk](https://snyk.io/docs/ci/) for information on how to set this up with Travis. Provide a value for `SNYK_TOKEN` as per the instructions to allow Snyk to run during the CI process. Make sure the 'Display in logs' flag is set to OFF when configuring the environment variable.
+
 ## Deployment
 ### Building the project for deployment
 
