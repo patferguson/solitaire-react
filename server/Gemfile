@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -36,7 +36,7 @@ gem 'foreman', '~> 0.82.0'
 gem 'enumerize', '~> 2.0'
 
 # Use ActiveModelSerializers to provide control over generating JSON from Models
-gem 'active_model_serializers', '~> 0.10'
+gem 'active_model_serializers', '~> 0.10', '>= 0.10.5'
 
 # Use bcrypt for encrypting user passwords to store in the database
 # used for ActiveModel has_secure_password
@@ -50,14 +50,14 @@ group :development, :test do
   gem 'byebug', platform: :mri
 
   # Use RSpec as the rails test runner https://github.com/rspec/rspec-rails
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   # Use FactoryGirl to assist with quickly mocking objects for tests
-  gem 'factory_girl_rails', '~> 4.8'
+  gem 'factory_girl_rails', '~> 4.8', '>= 4.8.0'
   # Use Faker to assist with mocking data for test objects
   gem 'faker', '~> 1.7'
 
   # Code coverage monitoring via https://coveralls.io/
-  gem 'coveralls', '~> 0.8'
+  gem 'coveralls', '~> 0.8', '>= 0.8.20'
 end
 
 group :development do
