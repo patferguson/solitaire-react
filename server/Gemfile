@@ -57,7 +57,7 @@ group :development, :test do
   gem 'faker', '~> 1.7'
 
   # Code coverage monitoring via https://coveralls.io/
-  gem 'coveralls', '~> 0.8'
+  gem 'coveralls', '~> 0.8', '>= 0.8.20'
 end
 
 group :development do
