@@ -44,7 +44,6 @@
     "react-dev-utils": "^0.4.2",
     "recursive-readdir": "2.1.0",
     "sass-loader": "^4.1.1",
-    "snyk": "^1.22.1",
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
@@ -61,12 +60,15 @@
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
     "react-router": "^3.0.0",
-    "react-router-bootstrap": "^0.23.1"
+    "react-router-bootstrap": "^0.23.1",
+    "snyk": "^1.316.2"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -96,5 +98,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "snyk": true
 }
