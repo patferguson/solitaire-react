@@ -5,6 +5,7 @@
     "commonjs": true,
     "jquery": true
   },
+  "plugins": ["compat"],
   "ecmaFeatures": {
     "modules": true,
     "jsx": true
@@ -13,5 +14,13 @@
     "react-app",
     "eslint:recommended"
   ],
-  "rules": {}
+  "settings": {
+    "targets": ["chrome >= 49", "firefox >= 43", "edge", "safari >= 9", "ie >= 10"],
+    "polyfills": ["fetch", "Promise", "assign"],
+    "coverage": true,
+    "compiler": "babel"
+  },
+  "rules": {
+    "compat/compat": 2
+  }
 }
